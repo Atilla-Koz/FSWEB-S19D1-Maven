@@ -1,10 +1,13 @@
-package com.workintech.s18d2.service;
+package com.workintech.s18d2.services;
 
 import com.workintech.s18d2.entity.Fruit;
+import com.workintech.s18d2.exceptions.PlantException;
 import com.workintech.s18d2.repository.FruitRepository;
 import lombok.AllArgsConstructor;
 import org.apache.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+
 
 import java.util.List;
 
@@ -31,16 +34,18 @@ public class FruitServiceImpl implements FruitService {
 
     @Override
     public Fruit save(Fruit fruit) {
-        return null;
+        return fruitRepository.save(fruit);
     }
 
     @Override
     public Fruit delete(Long id) {
-        return null;
+        Fruit fruit = getById(id);
+        fruitRepository.delete(fruit);
+        return fruit;
     }
 
     @Override
     public List<Fruit> searchByName(String name) {
-        return null;
+        return fruitRepository.searchByName(name);
     }
 }

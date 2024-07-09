@@ -1,4 +1,4 @@
-package com.workintech.s18d2.service;
+package com.workintech.s18d2.services;
 
 import com.workintech.s18d2.entity.Fruit;
 
