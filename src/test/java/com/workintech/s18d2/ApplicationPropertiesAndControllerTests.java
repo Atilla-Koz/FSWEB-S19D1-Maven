@@ -82,7 +82,7 @@ class ApplicationPropertiesAndControllerTests {
 
     @Test
     void testGetFruits() throws Exception {
-        given(fruitService.getByPriceAsc()).willReturn(List.of(sampleFruit));
+        given(fruitService.getByPriceASC()).willReturn(List.of(sampleFruit));
         mockMvc.perform(get("/fruit"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
@@ -91,7 +91,7 @@ class ApplicationPropertiesAndControllerTests {
 
     @Test
     void testGetFruitsDesc() throws Exception {
-        given(fruitService.getByPriceDesc()).willReturn(List.of(sampleFruit));
+        given(fruitService.getByPriceDESC()).willReturn(List.of(sampleFruit));
         mockMvc.perform(get("/fruit/desc"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))

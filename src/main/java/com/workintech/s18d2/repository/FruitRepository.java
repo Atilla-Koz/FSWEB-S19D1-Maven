@@ -9,8 +9,7 @@ import java.util.List;
 public interface FruitRepository extends JpaRepository<Fruit, Long>{
 
     @Query(value = "SELECT f.id, f.name, f.price, f.fruit_type FROM fsweb.fruit f ORDER by f.price DESC" , nativeQuery = true)
-    List<Fruit> getByPriceDesc();
-
+    List<Fruit> getByPriceDESC();
 
     @Query(value = "SELECT f.id, f.name, f.price, f.fruit_type FROM fsweb.fruit f ORDER by f.price ASC" , nativeQuery = true)
     List<Fruit> getByPriceASC();

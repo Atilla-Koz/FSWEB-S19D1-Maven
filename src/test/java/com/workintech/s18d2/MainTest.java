@@ -41,8 +41,6 @@ class MainTest {
     @Mock
     private FruitRepository mockFruitRepository;
 
-
-
     private FruitServiceImpl fruitService;
 
     private Fruit sampleFruitForFruitServiceTest;
@@ -113,23 +111,22 @@ class MainTest {
         assertEquals(20.0, vegetable.getPrice());
         assertFalse(vegetable.isGrownOnTree());
 
-
         vegetable.setGrownOnTree(true);
         assertTrue(vegetable.isGrownOnTree());
     }
 
     @Test
-    @DisplayName("FruitRepository::getByPriceDesc should return fruits in descending order of price")
-    void testGetByPriceDesc() {
-        List<Fruit> fruits = fruitRepository.getByPriceDesc();
+    @DisplayName("FruitRepository::getByPriceDESC should return fruits in descending order of price")
+    void testGetByPriceDESC() {
+        List<Fruit> fruits = fruitRepository.getByPriceDESC();
         assertEquals(2, fruits.size());
         assertTrue(fruits.get(0).getPrice() >= fruits.get(1).getPrice());
     }
 
     @Test
-    @DisplayName("FruitRepository::getByPriceAsc should return fruits in ascending order of price")
-    void testGetByPriceAsc() {
-        List<Fruit> fruits = fruitRepository.getByPriceAsc();
+    @DisplayName("FruitRepository::getByPriceASC should return fruits in ascending order of price")
+    void testGetByPriceASC() {
+        List<Fruit> fruits = fruitRepository.getByPriceASC();
         assertEquals(2, fruits.size());
         assertTrue(fruits.get(0).getPrice() <= fruits.get(1).getPrice());
     }
@@ -163,10 +160,10 @@ class MainTest {
 
     @Test
     @DisplayName("FruitService::getAll() should return all fruits")
-    void testGetByPriceAscFruitService() {
-        when(mockFruitRepository.getByPriceAsc()).thenReturn(Arrays.asList(sampleFruitForFruitServiceTest));
+    void testGetByPriceASCFruitService() {
+        when(mockFruitRepository.getByPriceASC()).thenReturn(Arrays.asList(sampleFruitForFruitServiceTest));
 
-        List<Fruit> fruits = fruitService.getByPriceAsc();
+        List<Fruit> fruits = fruitService.getByPriceASC();
 
         assertFalse(fruits.isEmpty());
         assertEquals(1, fruits.size());
@@ -206,7 +203,4 @@ class MainTest {
         assertEquals(1, fruits.size());
         assertEquals(sampleFruitForFruitServiceTest.getName(), fruits.get(0).getName());
     }
-
-
-
 }

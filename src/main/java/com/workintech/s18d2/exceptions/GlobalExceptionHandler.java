@@ -1,6 +1,5 @@
 package com.workintech.s18d2.exceptions;
 
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,17 +12,25 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler
+    @ExceptionHandler(PlantException.class)
     public ResponseEntity<PlantErrorResponse> handleException(PlantException exception){
-        log.error("PlanException: ", exception);
-        PlantErrorResponse response = new PlantErrorResponse(exception.getHttpStatus().value(), exception.getMessage(), LocalDateTime.now());
+        log.error("PlantException: ", exception);
+        PlantErrorResponse response = new PlantErrorResponse(
+                exception.getHttpStatus().value(),
+                exception.getMessage(),
+                LocalDateTime.now()
+        );
         return new ResponseEntity<>(response, exception.getHttpStatus());
     }
 
-    @ExceptionHandler
+    @ExceptionHandler(Exception.class)
     public ResponseEntity<PlantErrorResponse> handleException(Exception exception){
         log.error("Exception: ", exception);
-        PlantErrorResponse response = new PlantErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), exception.getMessage(), LocalDateTime.now());
+        PlantErrorResponse response = new PlantErrorResponse(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                exception.getMessage(),
+                LocalDateTime.now()
+        );
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

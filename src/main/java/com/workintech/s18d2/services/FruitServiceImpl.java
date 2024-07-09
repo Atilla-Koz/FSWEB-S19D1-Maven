@@ -4,10 +4,8 @@ import com.workintech.s18d2.entity.Fruit;
 import com.workintech.s18d2.exceptions.PlantException;
 import com.workintech.s18d2.repository.FruitRepository;
 import lombok.AllArgsConstructor;
-import org.apache.http.HttpStatus;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-
 
 import java.util.List;
 
@@ -24,12 +22,13 @@ public class FruitServiceImpl implements FruitService {
 
     @Override
     public List<Fruit> getByPriceDESC() {
-        return fruitRepository.getByPriceDesc();
+        return fruitRepository.getByPriceDESC();
     }
 
     @Override
     public Fruit getById(Long id) {
-        return fruitRepository.findById(id).orElseThrow(() -> new PlantException("plant with given id is not exist" + id, HttpStatus.SC_NOT_FOUND));
+        return fruitRepository.findById(id)
+                .orElseThrow(() -> new PlantException("Plant with given id does not exist: " + id, HttpStatus.NOT_FOUND));
     }
 
     @Override

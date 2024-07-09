@@ -11,13 +11,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "fruit", schema = "fsweb")
-public class Fruit extends Plant {
-
-    @Column(name = "fruit_type")
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private FruitType fruitType;
+@Table(name = "vegetable", schema = "fsweb")
+public class Vegetable extends Plant {
 
     @Column(name = "grown_on_tree")
     private boolean grownOnTree;

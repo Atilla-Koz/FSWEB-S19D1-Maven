@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/fruits")
-public class FruitConroller {
+public class FruitController {
 
     private final FruitService fruitService;
 
